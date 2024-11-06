@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Blinking Cursor */
+#cursor {
+    display: inline-block;
+    content: '|';
+    width: 2px;
+    padding: 2px;
+    background-color: currentColor;
+    animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+section{
+    @apply rounded-[25px] mb-5;
+}
+
+#noScrollbar {
+    overflow: auto; /* Ensures the div is scrollable */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+#noScrollbar::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and other WebKit-based browsers */
+}
+
+.dot{
+    transition: background-color 0.4s ease-in-out;
+}
+.dot.active{
+    @apply bg-purple-600 text-white hover:bg-purple-700 hover:text-white;
+}
+
+#itemProjects {
+    transform: translateX(100%); /* Mulai dari luar layar di sebelah kanan */
+}
+
+#itemProjects.show {
+    transform: translateX(0); /* Kembali ke posisi normal */
+}
+
+#introBox.hide {
+    transform: translateX(-100%); /* Menggeser keluar ke kiri */
+}
+
+/* Carousel */
+.projects-carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%; /* Pastikan lebar penuh */
+    position: relative;
+}
+
+.carousel-item {
+    flex: 0 0 auto; /* Pastikan item tidak mengecil */
+    margin-right: 10px; /* Jarak antar item */
+}
+
+.news-dots{
+    @apply flex items-center gap-1 mt-4;
+}
+
+.news-dots button.owl-dot{
+    @apply bg-purple-300 rounded-3xl w-[7px] h-[7px] aspect-square;
+}
+
+.news-dots button.owl-dot.active{
+    @apply bg-purple-700 w-[21px] aspect-auto;
+}
+
+/* Custom cursor */
+/* Menghilangkan cursor default */
+body {
+    cursor: none;
+}
+
+/* Icon Mouse */
+/* Mouse icon styling */
+.icon-mouse {
+    width: 50px;
+    height: 80px;
+    border-radius: 50px;
+}
+
+/* Scroll indicator inside the mouse */
+.icon-mouse .scroll {
+    width: 5px;
+    height: 15px;
+    border-radius: 10px;
+    animation: scroll 1s infinite ease-in-out;
+}
+
+/* Keyframes for the scroll animation */
+@keyframes scroll {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.custom-cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(100, 100, 255, 0.6);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+}
+
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(150, 150, 255, 0.8);
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0;
+    animation: particle-animation 0.6s forwards;
+}
+
+/* Animasi partikel */
+@keyframes particle-animation {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+}
+
+/* Typing Contact */
+/* Animasi kursor berkedip */
+.cursor {
+    border-right: 2px solid rgba(255, 255, 255, 0.541);
+    display: inline;
+    animation: blink 0.2s steps(1) infinite;
+
+}
+
+/* Content Box */
+.content-box p{
+    @apply mb-4;
+}
+
+.content-box code{
+    @apply p-0 px-2 rounded-md bg-purple-950 text-purple-100;
+}
+
+.content-box ol, .content-box ul {
+    @apply mb-4;
+}
+
+.content-box ol li{
+    list-style-type: decimal;
+    @apply ms-[20px] mb-2;
+}
+
+.content-box ol li::marker {
+    @apply text-purple-700 font-medium;
+}
+
+.content-box img{
+    @apply block rounded-3xl w-full object-cover mb-3;
+}
+
+.content-box ul li {
+    position: relative;
+    padding-left: 24px;
+    @apply mb-2;
+}
+.content-box ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 15px;
+    @apply bg-purple-700 mt-3;
+}
+
+.content-box h2,.content-box h3,.content-box h4,.content-box h5,.content-box h6{
+    @apply font-medium text-slate-950 mb-3;
+}
+
+.content-box h2{
+    @apply text-3xl;
+}
+
+.content-box h3{
+    @apply text-2xl;
+}
+
+.content-box h4{
+    @apply text-xl;
+}
+
+.content-box h5{
+    @apply text-lg;
+}
+
+.content-box h6{
+    @apply text-base;
+}
+
+.content-box.content-article h2::before,.content-box.content-article h3::before,.content-box.content-article h4::before,.content-box.content-article h5::before{
+    content: '#';
+    @apply text-purple-700 pe-2;
+}
+
+/* Sliding Comment and Applouse */
+#fixedDiv.slide-down {
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+#fixedDiv.slide-up {
+    transform: translateY(0);
+    transition: transform 0.5s ease-in-out;
+}
